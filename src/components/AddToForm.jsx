@@ -1,4 +1,14 @@
+import { useState } from "react"
+
 export default function AddToForm() {
+  const [value, setValue] = useState("")
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("user entered: " + value)
+    setValue("")
+  }
+  console.log(value)
   return (
     <>
       <h1 className="text-3xl font-bold mb-4">Todo List</h1>
@@ -8,9 +18,12 @@ export default function AddToForm() {
           type="text"
           className="rounded-lg p-4 mr-12 w-full border-t border-b border-l text-gray-800 border-gray-200 bg-white"
           placeholder="Add a task..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
         <button
-          type="submit"
+          type="button"
+          onClick={handleSubmit}
           className="px-8 rounded-lg bg-green-500 text-gray-200 font-bold p-4 uppercases active:bg-green-400"
         >
           Add
