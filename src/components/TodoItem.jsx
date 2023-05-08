@@ -1,4 +1,13 @@
-export default function TodoItem({ title, completed }) {
+import { useDispatch } from "react-redux"
+import { toggleComplete } from "../redux/todoSlice"
+
+export default function TodoItem({ id, title, completed }) {
+  const dispatch = useDispatch()
+
+  const handleCompleteClick = () => {
+    dispatch(toggleComplete({ id: id, completed: !completed }))
+  }
+
   return (
     <>
       <li className=" flex items-center justify-between p-4">
@@ -7,6 +16,7 @@ export default function TodoItem({ title, completed }) {
             type="checkbox"
             className="mr-2 leading-tight"
             checked={completed}
+            onChange={handleCompleteClick}
           />
           <span className="text-gray-800">{title}</span>
         </div>
