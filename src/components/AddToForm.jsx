@@ -9,7 +9,7 @@ export default function AddToForm() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    dispatch(addTodo())
+    dispatch(addTodo({ title: value }))
   }
   console.log(value)
   return (
